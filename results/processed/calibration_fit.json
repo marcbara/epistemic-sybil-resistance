@@ -1,0 +1,22 @@
+{
+  "n_worlds": 100,
+  "n_valid_reports": 800,
+  "n_valid_leakage": 300,
+  "validity_rate": 1.0,
+  "sigma_r2": 7718.352271662088,
+  "report_bias": -11.307427499999996,
+  "sigma_hat2": 2518.6897572231132,
+  "nu_hat2": 5107.784706092358,
+  "rho_hat": 0.33025610579808573,
+  "leakage": {
+    "rmse_leakage": 482.82860189425537,
+    "rmse_baseline": 94.19481911178755,
+    "practical_improvement": -4.125850937950728,
+    "corr": 0.11379728614445768,
+    "permutation_p": 0.049147542622868856,
+    "practical_pass": true,
+    "statistical_pass": true
+  },
+  "dedup_threshold": 0.8,
+  "gamma_cal": 0.7190254427975703
+}

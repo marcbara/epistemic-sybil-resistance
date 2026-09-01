@@ -1,0 +1,185 @@
+{
+  "aggregator_metrics": {
+    "naive": {
+      "A": {
+        "n_worlds": 200,
+        "rmse": 65.90063003782187,
+        "mean_posterior_sd": 40.21791747618709,
+        "coverage": 0.785,
+        "mean_nll": 5.955737802387439,
+        "calibration_ratio": 1.6385888224282483
+      },
+      "B": {
+        "n_worlds": 200,
+        "rmse": 39.991241136984016,
+        "mean_posterior_sd": 40.21791747618709,
+        "coverage": 0.925,
+        "mean_nll": 5.107630818482235,
+        "calibration_ratio": 0.9943637971971749
+      },
+      "C": {
+        "n_worlds": 200,
+        "rmse": 65.90063003782187,
+        "mean_posterior_sd": 40.21791747618709,
+        "coverage": 0.785,
+        "mean_nll": 5.955737802387439,
+        "calibration_ratio": 1.6385888224282483
+      },
+      "D": {
+        "n_worlds": 200,
+        "rmse": 39.991241136984016,
+        "mean_posterior_sd": 40.21791747618709,
+        "coverage": 0.925,
+        "mean_nll": 5.107630818482235,
+        "calibration_ratio": 0.9943637971971749
+      }
+    },
+    "provenance": {
+      "A": {
+        "n_worlds": 200,
+        "rmse": 59.27098223726444,
+        "mean_posterior_sd": 52.45313044343892,
+        "coverage": 0.92,
+        "mean_nll": 5.517285819365891,
+        "calibration_ratio": 1.1299798836825825
+      },
+      "B": {
+        "n_worlds": 200,
+        "rmse": 39.99497672111297,
+        "mean_posterior_sd": 40.01637028808783,
+        "coverage": 0.925,
+        "mean_nll": 5.10769268333026,
+        "calibration_ratio": 0.9994653796228683
+      },
+      "C": {
+        "n_worlds": 200,
+        "rmse": 59.27098223726444,
+        "mean_posterior_sd": 52.45313044343892,
+        "coverage": 0.92,
+        "mean_nll": 5.517285819365891,
+        "calibration_ratio": 1.1299798836825825
+      },
+      "D": {
+        "n_worlds": 200,
+        "rmse": 39.99497672111297,
+        "mean_posterior_sd": 40.01637028808783,
+        "coverage": 0.925,
+        "mean_nll": 5.10769268333026,
+        "calibration_ratio": 0.9994653796228683
+      }
+    },
+    "provenance_gamma": {
+      "A": {
+        "n_worlds": 200,
+        "rmse": 56.63349868377543,
+        "mean_posterior_sd": 62.91059321008441,
+        "coverage": 0.95,
+        "mean_nll": 5.4658529014700035,
+        "calibration_ratio": 0.9002219784298143
+      },
+      "B": {
+        "n_worlds": 200,
+        "rmse": 39.99497672111297,
+        "mean_posterior_sd": 40.01637028808783,
+        "coverage": 0.925,
+        "mean_nll": 5.10769268333026,
+        "calibration_ratio": 0.9994653796228683
+      },
+      "C": {
+        "n_worlds": 200,
+        "rmse": 56.63349868377543,
+        "mean_posterior_sd": 62.91059321008441,
+        "coverage": 0.95,
+        "mean_nll": 5.4658529014700035,
+        "calibration_ratio": 0.9002219784298143
+      },
+      "D": {
+        "n_worlds": 200,
+        "rmse": 39.99497672111297,
+        "mean_posterior_sd": 40.01637028808783,
+        "coverage": 0.925,
+        "mean_nll": 5.10769268333026,
+        "calibration_ratio": 0.9994653796228683
+      }
+    },
+    "dedup_legacy": {
+      "A": {
+        "n_worlds": 200,
+        "rmse": 59.87121577875019,
+        "mean_posterior_sd": 51.39771114604248,
+        "coverage": 0.88,
+        "mean_nll": 5.573008106216215,
+        "calibration_ratio": 1.1648615170553203
+      },
+      "B": {
+        "n_worlds": 200,
+        "rmse": 45.083667436159836,
+        "mean_posterior_sd": 50.92740884009741,
+        "coverage": 0.97,
+        "mean_nll": 5.246436965348015,
+        "calibration_ratio": 0.8852535101032564
+      },
+      "C": {
+        "n_worlds": 200,
+        "rmse": 64.06268231609948,
+        "mean_posterior_sd": 43.781370196358914,
+        "coverage": 0.81,
+        "mean_nll": 5.7835771076322615,
+        "calibration_ratio": 1.46324068956223
+      },
+      "D": {
+        "n_worlds": 200,
+        "rmse": 40.778448907656454,
+        "mean_posterior_sd": 43.85675193270046,
+        "coverage": 0.945,
+        "mean_nll": 5.141308007912261,
+        "calibration_ratio": 0.9298100545665635
+      }
+    },
+    "dedup_balanced": {
+      "A": {
+        "n_worlds": 200,
+        "rmse": 56.62035231098419,
+        "mean_posterior_sd": 57.79714630914772,
+        "coverage": 0.945,
+        "mean_nll": 5.478341024101852,
+        "calibration_ratio": 0.9796392369985008
+      },
+      "B": {
+        "n_worlds": 200,
+        "rmse": 48.44416434905791,
+        "mean_posterior_sd": 56.87090276582773,
+        "coverage": 0.97,
+        "mean_nll": 5.326129798972647,
+        "calibration_ratio": 0.8518268920142194
+      },
+      "C": {
+        "n_worlds": 200,
+        "rmse": 63.12959708976987,
+        "mean_posterior_sd": 45.249562798211734,
+        "coverage": 0.82,
+        "mean_nll": 5.701061356892447,
+        "calibration_ratio": 1.3951426972077783
+      },
+      "D": {
+        "n_worlds": 200,
+        "rmse": 40.06174835113613,
+        "mean_posterior_sd": 45.22452536080596,
+        "coverage": 0.96,
+        "mean_nll": 5.134892801923037,
+        "calibration_ratio": 0.8858412118539518
+      }
+    }
+  },
+  "mechanism": {
+    "false_merge_rate_cell_b": 0.6216666666666667,
+    "false_split_rate_cell_c": 0.8458333333333333,
+    "mean_inferred_clusters": {
+      "A_true_roots_1": 1.62,
+      "B_true_roots_4": 1.69,
+      "C_true_roots_1": 3.075,
+      "D_true_roots_4": 3.085
+    },
+    "balanced_threshold_used": 0.7
+  }
+}

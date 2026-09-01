@@ -1,0 +1,23 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 Marc Bara
+
+This work is licensed under the Creative Commons Attribution 4.0
+International License. To view a copy of this license, visit
+
+    https://creativecommons.org/licenses/by/4.0/
+
+or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042,
+USA.
+
+Full legal text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+--------------------------------------------------------------------------
+
+Scope: this license applies to the frozen model-elicitation prompts, the
+frozen raw model outputs (results/raw/*.jsonl), the frozen processed
+analysis outputs (results/processed/*.json), the synthetic world-generation
+data, the calibration/evaluation world-ID splits, and the other
+experimental material in this repository that is not source code -- see
+README.md, "License," for the exact scope and for what is licensed under
+LICENSE-CODE (MIT) instead.

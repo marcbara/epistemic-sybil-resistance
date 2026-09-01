@@ -1,0 +1,95 @@
+{
+  "precision_curve": [
+    {
+      "m": 1,
+      "n_worlds": 300,
+      "empirical_var": 9176.912034813846,
+      "empirical_var_ci95": [
+        7253.550960253353,
+        11312.636650671453
+      ],
+      "predicted_var": 7626.474463315471
+    },
+    {
+      "m": 2,
+      "n_worlds": 300,
+      "empirical_var": 8257.496173405007,
+      "empirical_var_ci95": [
+        6431.399864138582,
+        10225.121282186868
+      ],
+      "predicted_var": 5072.582110269292
+    },
+    {
+      "m": 4,
+      "n_worlds": 300,
+      "empirical_var": 8171.93000360996,
+      "empirical_var_ci95": [
+        6336.556537879628,
+        10051.080530008974
+      ],
+      "predicted_var": 3795.6359337462027
+    },
+    {
+      "m": 8,
+      "n_worlds": 300,
+      "empirical_var": 7748.074460137205,
+      "empirical_var_ci95": [
+        6141.234427594642,
+        9584.449080969078
+      ],
+      "predicted_var": 3157.1628454846577
+    },
+    {
+      "m": 16,
+      "n_worlds": 300,
+      "empirical_var": 7671.139620292482,
+      "empirical_var_ci95": [
+        6079.692626764822,
+        9488.47562230039
+      ],
+      "predicted_var": 2837.9263013538857
+    },
+    {
+      "m": 32,
+      "n_worlds": 300,
+      "empirical_var": 7509.923434088083,
+      "empirical_var_ci95": [
+        5930.953739020785,
+        9299.98155033082
+      ],
+      "predicted_var": 2678.3080292884993
+    }
+  ],
+  "gamma_correlated_extraction": {
+    "n_worlds": 300,
+    "mean_within_document_variance": 1516.353419640074,
+    "nu_hat2_total": 5107.784706092358,
+    "gamma_hat": 0.7031289478917486,
+    "implied_ceiling_sigma2_plus_gamma_nu2": 6110.121043675397,
+    "independent_model_ceiling_sigma2": 2518.6897572231132
+  },
+  "extraction_noise": {
+    "n": 9600,
+    "mean": -2.4015339583333346,
+    "sd": 81.03294891180215,
+    "frac_beyond_3sd": 0.011979166666666667,
+    "frac_beyond_3sd_normal": 0.0027,
+    "frac_beyond_4sd": 0.0038541666666666668,
+    "frac_beyond_4sd_normal": 6.3e-05,
+    "excess_kurtosis": 2.35249712451664
+  },
+  "bias": {
+    "report_bias": -11.307427499999996,
+    "subtracted_in_aggregators": false
+  },
+  "leakage_world_level": {
+    "n_worlds": 100,
+    "corr_world_level": 0.1649099445728493,
+    "permutation_p_world_level": 0.10089495525223739,
+    "rmse_leakage_world_means": 481.6643966802857,
+    "rmse_baseline": 94.19481911178755,
+    "practical_improvement": -4.113491391800021,
+    "note": "unit of analysis = per-world mean of the 3 no-doc calls; permutation over the 100 world clusters"
+  }
+}

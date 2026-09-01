@@ -1,0 +1,150 @@
+# Epistemic Sybil Resistance -- empirical companion
+# Config-driven per EXPERIMENT.md Section 9. Every knob named in the brief lives here.
+
+master_seed: 20260819
+
+paths:
+  results_dir: results/raw
+  processed_dir: results/processed
+  cache_dir: results/cache
+  figures_dir: figures
+
+dgp:
+  prior_mean: 500.0        # Theta ~ N(prior_mean, prior_sd^2), truncated positive
+  prior_sd: 100.0
+  sigma: 50.0               # document-level distortion eps ~ N(0, sigma^2)
+  # Cue mechanism (Section 2, revised post-pilot -- see worldgen.py docstring):
+  # E = A*(1+p) + Q*(1+g). B is stated as p% of A (not of the unstated total),
+  # trading the brief's literal self-referential form for arithmetic Haiku 4.5
+  # can reliably execute; still requires combining three cues, not lookup.
+  p_grid_pct_range: [15, 45]      # segment B as % of segment A
+  a_share_range: [0.35, 0.55]     # share of E targeted by the A*(1+p) term
+  g_grid_pct_range: [-10, 20]     # growth rate g, whole percent, step 1
+  display_grid: 0.1               # A and Q rounded to nearest 0.1 M EUR
+  num_distractors: [2, 3]         # count of irrelevant numeric cues (headcount, margin, etc.)
+
+elicitation:
+  # claude-sonnet-5 was tried and rejected as the main agent: it rejects an
+  # explicit `temperature` (fixed/managed sampling), which collapsed all 8
+  # reports per document to near-identical values (nu_hat^2 ~ 0) -- the clone
+  # regime, not the noisy T=0.7 extraction regime Section 2 requires as the
+  # main condition. Haiku 4.5 gives genuine nu^2>0 and passes gates 1-5
+  # cleanly; gate 6 misses its threshold (0.634 vs <0.5) due to real Haiku
+  # arithmetic slips on unambiguous documents, not template ambiguity --
+  # accepted as a disclosed finding per user decision, not iterated further.
+  main_model: "claude-haiku-4-5-20251001"
+  temperature_main: 0.7
+  temperature_clone: 0.0          # T=0 cell approximating the clone regime
+  max_tokens: 500                 # margin above what a strictly one-sentence rationale needs
+  system_prompt_version: "v1"
+
+cost:
+  hard_cap_usd: 10.0          # pilot.py / calibration.py cap
+  grid_ab_hard_cap_usd: 25.0  # grid_ab.py cap (300 worlds x 64 calls ~ $14-16 estimated)
+  # Haiku 4.5 pricing (USD per token).
+  price_per_input_token: 0.000001
+  price_per_output_token: 0.000005
+
+grids:
+  # Prediction 13.1 -- report multiplication, one root
+  grid_a:
+    k: 1
+    n_values: [1, 2, 4, 8, 16, 32]
+    w_worlds: 300
+  # Report count vs root count (12.4 analogue)
+  grid_b:
+    n_fixed: 16
+    k_values: [1, 2, 4, 8, 16]
+    w_worlds: 300   # shares worlds with grid_a
+  # Section 6.3 gamma, exploratory
+  grid_c:
+    k: 1
+    n: 8
+    conditions: ["same_model_t07", "mixed_family_t07", "same_model_t0"]
+    w_worlds: 200
+  # Prediction 13.3 -- propagation chains
+  grid_d:
+    k: 1
+    chain_length: 8
+    checkpoints: [1, 2, 4, 8]
+    n_chains: 4
+    w_worlds: 200
+
+calibration:
+  w_worlds: 100   # disjoint from evaluation worlds, never used for eval
+
+leakage_control:
+  calls_per_world: 3
+  # Pass criteria (Section 3): practical first, statistical second.
+  practical_rmse_improvement_max: 0.10   # must be < 10% better than prior-mean baseline
+  statistical_corr_threshold_at_100: 0.20  # ~ 2/sqrt(100)
+
+pilot:
+  w_worlds: 30
+  k: 1
+  n: 8
+  temperature: 0.7
+  # Gate 6 (Section 8): task must be informative but nontrivial
+  rmse_vs_prior_sd_max: 0.5
+  rho_hat_band: [0.2, 0.95]
+
+# World-id namespaces keep every phase's worlds disjoint by construction
+# (Section 4: calibration worlds "never used for evaluation"). Each phase
+# draws world_id in [base, base + count).
+world_id_ranges:
+  pilot: {base: 0, count: 30}
+  calibration: {base: 100000, count: 100}
+  grid_ab: {base: 200000, count: 300}
+  grid_c: {base: 300000, count: 200}
+  grid_d: {base: 400000, count: 200}
+  two_by_two_pilot: {base: 500000, count: 30}
+  two_by_two_dedup_calibration: {base: 510000, count: 60}   # 15/cell, balanced
+  two_by_two_eval: {base: 520000, count: 200}
+
+aggregators:
+  dedup:
+    embed_target: "rationale_only"   # primary variant per Section 5.2
+    threshold_grid: [0.80, 0.85, 0.90, 0.92, 0.94, 0.96, 0.98]
+
+# 2x2 similarity x ancestry design (prediction 13.4). Paired by world: every
+# world generates 4 roots E1..E4 (root_id 0..3). Ancestry is manipulated by
+# which roots feed a cell's m=4 reports.
+#
+# Representation similarity is NOT manipulated at elicitation time. A pilot
+# attempt at prompt-level rationale-phrasing styles (S1/S2 instructions in
+# the system prompt) showed RMSE differing 0.80x between styles -- the
+# "representation" manipulation was leaking into extraction quality, a real
+# confound. Instead: ONE frozen elicitation (identical prompt for every
+# cell) produces estimate + raw_rationale; a deterministic post-hoc
+# renderer (src/render.py, no LLM call, never reads the estimate or raw
+# rationale) then produces the S1/S2 text used for embedding. Theta, E, the
+# extraction process, and the estimate are held fixed across styles by
+# construction -- only the report's downstream *representation* varies.
+#
+#   A (similar,    shared root):       root0 x4 reports, all rendered S1
+#   B (similar,    independent roots): roots0-3 x1 report each, all rendered S1
+#   C (dissimilar, shared root):       root0 x4 reports, rendered S1,S1,S2,S2
+#   D (dissimilar, independent roots): roots0-3 x1 report each, rendered S1,S1,S2,S2
+two_by_two:
+  m_reports_per_cell: 4
+  k_roots_available: 4
+  # Threshold-independent mechanism gate (replaces an earlier attempt that
+  # required false merges under the legacy A/B threshold specifically --
+  # that threshold belongs to a different rationale distribution and was
+  # only ever meant to be kept as a historical baseline, not a gate
+  # criterion). The structural claim under test: cell B (independent roots,
+  # similar representation) should look MORE similar in embedding space
+  # than cell C (shared root, dissimilar representation) -- an inversion of
+  # what report-only similarity should track if it tracked ancestry.
+  #   Delta_BC = E[cos(within-cell-B pairs)] - E[cos(within-cell-C pairs)]
+  # Gate: Delta_BC substantially positive, bootstrap CI lower bound > 0.
+  delta_bc_min_margin: 0.10
+  render_style_separation_min_gap: 0.15  # sanity check on the renderer templates themselves
+  # Historical baseline, unchanged, never re-tuned:
+  legacy_dedup_threshold_source: "calibration_fit.json:dedup_threshold"  # 0.80, from A/B
+  # Widened sweep for the balanced-calibration fit and the oracle diagnostic
+  # -- A/B's grid [0.80-0.98] sits entirely in the "rarely merges" regime
+  # for this task's embedding scale (pilot found mean within-style cosine
+  # ~0.62, mean cross-style ~0.36); this grid brackets both.
+  dedup_threshold_grid_expanded: [0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60,
+                                   0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95]

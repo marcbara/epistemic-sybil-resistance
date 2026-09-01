@@ -1,0 +1,18 @@
+# Tested with Python 3.12.10 on the versions pinned below. Newer patch/minor
+# versions of these packages are very likely to work too; these are the
+# exact versions the frozen results in results/processed/ were produced
+# and re-verified with (see REPRODUCIBILITY.md).
+#
+# anthropic is only required for the optional, credentialed path (rerunning
+# live model calls via src/pilot.py, src/calibration.py, src/grid_ab.py,
+# src/two_by_two.py). reproduce_paper.py never imports it in a way that
+# requires an API key or network access.
+
+numpy==2.5.2
+matplotlib==3.11.1
+PyYAML==6.0.3
+python-dotenv==1.2.3
+tenacity==9.1.4
+anthropic==0.122.0
+pytest==9.1.1
+pytest-asyncio==1.4.0

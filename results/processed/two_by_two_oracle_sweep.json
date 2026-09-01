@@ -1,0 +1,94 @@
+{
+  "sweep": [
+    {
+      "threshold": 0.3,
+      "false_merge_rate_b": 1.0,
+      "false_split_rate_c": 0.0,
+      "distance_from_origin": 1.0
+    },
+    {
+      "threshold": 0.35,
+      "false_merge_rate_b": 1.0,
+      "false_split_rate_c": 0.013333333333333334,
+      "distance_from_origin": 1.0000888849386227
+    },
+    {
+      "threshold": 0.4,
+      "false_merge_rate_b": 1.0,
+      "false_split_rate_c": 0.1,
+      "distance_from_origin": 1.004987562112089
+    },
+    {
+      "threshold": 0.45,
+      "false_merge_rate_b": 1.0,
+      "false_split_rate_c": 0.22,
+      "distance_from_origin": 1.0239140588936164
+    },
+    {
+      "threshold": 0.5,
+      "false_merge_rate_b": 1.0,
+      "false_split_rate_c": 0.5433333333333333,
+      "distance_from_origin": 1.13807342079108
+    },
+    {
+      "threshold": 0.55,
+      "false_merge_rate_b": 1.0,
+      "false_split_rate_c": 0.5433333333333333,
+      "distance_from_origin": 1.13807342079108
+    },
+    {
+      "threshold": 0.6,
+      "false_merge_rate_b": 1.0,
+      "false_split_rate_c": 0.72,
+      "distance_from_origin": 1.2322337440599491
+    },
+    {
+      "threshold": 0.65,
+      "false_merge_rate_b": 0.8558333333333333,
+      "false_split_rate_c": 0.7825,
+      "distance_from_origin": 1.1596365570489937
+    },
+    {
+      "threshold": 0.7,
+      "false_merge_rate_b": 0.6216666666666667,
+      "false_split_rate_c": 0.8458333333333333,
+      "distance_from_origin": 1.0497159007189623
+    },
+    {
+      "threshold": 0.75,
+      "false_merge_rate_b": 0.55,
+      "false_split_rate_c": 0.8683333333333333,
+      "distance_from_origin": 1.0278632096625395
+    },
+    {
+      "threshold": 0.8,
+      "false_merge_rate_b": 0.38,
+      "false_split_rate_c": 0.8891666666666667,
+      "distance_from_origin": 0.966962957465854
+    },
+    {
+      "threshold": 0.85,
+      "false_merge_rate_b": 0.25,
+      "false_split_rate_c": 0.9116666666666666,
+      "distance_from_origin": 0.9453232839146146
+    },
+    {
+      "threshold": 0.9,
+      "false_merge_rate_b": 0.25,
+      "false_split_rate_c": 0.9116666666666666,
+      "distance_from_origin": 0.9453232839146146
+    },
+    {
+      "threshold": 0.95,
+      "false_merge_rate_b": 0.25,
+      "false_split_rate_c": 0.9116666666666666,
+      "distance_from_origin": 0.9453232839146146
+    }
+  ],
+  "closest_to_origin": {
+    "threshold": 0.85,
+    "false_merge_rate_b": 0.25,
+    "false_split_rate_c": 0.9116666666666666,
+    "distance_from_origin": 0.9453232839146146
+  }
+}
